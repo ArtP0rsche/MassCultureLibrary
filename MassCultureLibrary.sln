@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MassCultureLibrary", "MassC
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MassCultureLibrary.Tests", "MassCultureLibrary.Tests\MassCultureLibrary.Tests.csproj", "{27565CCC-6F3C-4CCC-A185-1BC6216A4FB4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MassCultureLibrary.Desktop", "MassCultureLibrary.Desktop\MassCultureLibrary.Desktop.csproj", "{B2D240D1-98FC-4E76-850B-57539865BF0E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MassCultureLibrary.Desktop", "MassCultureLibrary.Desktop\MassCultureLibrary.Desktop.csproj", "{B2D240D1-98FC-4E76-850B-57539865BF0E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlaUITest", "FlaUITest\FlaUITest.csproj", "{9221EC08-AA5A-4243-BAE9-2125439741E5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{B2D240D1-98FC-4E76-850B-57539865BF0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B2D240D1-98FC-4E76-850B-57539865BF0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B2D240D1-98FC-4E76-850B-57539865BF0E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9221EC08-AA5A-4243-BAE9-2125439741E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9221EC08-AA5A-4243-BAE9-2125439741E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9221EC08-AA5A-4243-BAE9-2125439741E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9221EC08-AA5A-4243-BAE9-2125439741E5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -17,14 +17,12 @@ namespace MassCultureLibrary.Animes
 
         public JsonAnimeStorage()
         {
-            if (!File.Exists(_filename))
-            {
-                using FileStream f = new FileStream(_filename, FileMode.OpenOrCreate);
-                var values = new List<Anime>();
-                values.Add(new Anime { Id = Guid.NewGuid(), Title = "Наруто", Genre = "Экшен", Status = "Завершено" });
-                JsonSerializer.SerializeAsync<List<Anime>>(f, values, _options);
-            }
-            using FileStream file = new FileStream(_filename, FileMode.OpenOrCreate);
+            using FileStream f = new FileStream(_filename, FileMode.OpenOrCreate);
+            var values = new List<Anime>();
+            values.Add(new Anime { Id = Guid.NewGuid(), Title = "Наруто", Genre = "Экшен", Status = "Завершено" });
+            JsonSerializer.SerializeAsync<List<Anime>>(f, values, _options);
+            f.Close();
+            using FileStream file = new FileStream(_filename, FileMode.Open);
             _animes = JsonSerializer.Deserialize<List<Anime>>(file, _options) ?? new List<Anime>();
         }
 

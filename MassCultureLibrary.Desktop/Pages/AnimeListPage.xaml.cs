@@ -1,18 +1,6 @@
 ﻿using MassCultureLibrary.Animes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace MassCultureLibrary.Desktop.Pages
 {
@@ -28,13 +16,44 @@ namespace MassCultureLibrary.Desktop.Pages
         }
         async void RenewList()
         {
-            AnimeListView.Items.Clear();
             IAnimeService animeService = new AnimeService(new JsonAnimeStorage());
+            AnimeDataGrid.Items.Clear();
             var items = await animeService.GetAnimeAsync();
             foreach (var item in items)
             {
-                AnimeListView.Items.Add(item);
+                AnimeDataGrid.Items.Add(item);
             }
+        }
+
+        private async void DeleteMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            IAnimeService animeService = new AnimeService(new JsonAnimeStorage());
+            var anime = AnimeDataGrid.SelectedItem as Anime;
+            if (AnimeDataGrid.Items.Count > 1)
+            {
+                await animeService.DeleteAnimeByIdAsync(anime.Id);
+                AnimeDataGrid.Items.Remove(anime);
+            }
+            else
+                MessageBox.Show("Нельзя удалить единственный элемент списка", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
+
+        private void AddAnimeButton_Click(object sender, RoutedEventArgs e)
+        {
+            var anime = new Anime();
+            Guid id = Guid.NewGuid();
+            if (!String.IsNullOrWhiteSpace(TitleTextBox.Text) && !String.IsNullOrWhiteSpace(GenreTextBox.Text))
+            {
+                anime.Id = id;
+                anime.Title = TitleTextBox.Text;
+                anime.Genre = GenreTextBox.Text;
+                anime.Status = StatusComboBox.Text;
+                AnimeDataGrid.Items.Add(anime);
+            }
+            else
+                MessageBox.Show("Поля ввода не должны быть пустыми", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            
+            AnimeDataGrid.Items.Refresh();
         }
     }
 }

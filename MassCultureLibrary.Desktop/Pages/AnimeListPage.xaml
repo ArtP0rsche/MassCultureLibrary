@@ -8,9 +8,32 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="AnimeListPage">
 
-    <Grid>
-        <ListView x:Name="AnimeListView">
-            
-        </ListView>
-    </Grid>
+    <StackPanel>
+        <WrapPanel>
+            <Label Content="Название"/>
+            <TextBox x:Name="TitleTextBox" Width="40" AutomationProperties.AutomationId="TitleTextBox"/>
+            <Label Content="Жанр"/>
+            <TextBox x:Name="GenreTextBox" Width="40" AutomationProperties.AutomationId="GenreTextBox"/>
+            <Label Content="Статус"/>
+            <ComboBox x:Name="StatusComboBox" SelectedIndex="0">
+                <ComboBoxItem Content="Онгоинг"/>
+                <ComboBoxItem Content="Завершено"/>
+                <ComboBoxItem Content="Приостановлен"/>
+            </ComboBox>
+        </WrapPanel>
+        <Button x:Name="AddAnimeButton" Content="Добавить" Click="AddAnimeButton_Click"/>
+        <DataGrid x:Name="AnimeDataGrid" IsReadOnly="True">
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem x:Name="DeleteMenuItem" Header="Удалить" Click="DeleteMenuItem_Click" AutomationProperties.AutomationId="DeleteMenuItem"/>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="Title" Binding="{Binding Title}"/>
+                <DataGridTextColumn Header="Genre" Binding="{Binding Genre}"/>
+                <DataGridTextColumn Header="Status" Binding="{Binding Status}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </StackPanel>
 </Page>

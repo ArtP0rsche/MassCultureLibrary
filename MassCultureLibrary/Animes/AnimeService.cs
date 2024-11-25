@@ -30,7 +30,7 @@ namespace MassCultureLibrary.Animes
             await _repository.DeleteAsync(animeId);
         }
 
-        public Task DeleteAnimeAsync(Anime anime) // реализация удаления всего объекта
+        public Task DeleteAnimeAsync(Anime anime) // удаление всего объекта
         {
             throw new NotImplementedException();
         }
@@ -40,9 +40,9 @@ namespace MassCultureLibrary.Animes
             return await _repository.GetAllAsync();
         }
 
-        public Task<Anime?> GetAnimeByIdAsync(Guid animeId) 
+        public async Task<Anime?> GetAnimeByIdAsync(Guid animeId) // реализация получения по Id
         {
-            throw new NotImplementedException();
+            return await _repository.GetByIdAsync(animeId);
         }
 
         public Task<Anime?> GetAnimeByTitleAsync(string title) // получение аниме по названию
